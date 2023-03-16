@@ -1,0 +1,98 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  fullName: String
+  email: String!
+  password: String!
+  token: String
+  firstName: String
+  lastName: String
+  contactNumber: String
+}
+
+type AuthResponse {
+  token: String!
+  user: User!
+  status: String!
+}
+
+type Blogs {
+  id: String!
+  categories: String!
+  slug: String!
+  title: String!
+  content: String!
+  image: String!
+  author: String!
+  created_date: String!
+  meta_title: String!
+  meta_description: String!
+}
+
+type BlogsComments {
+  id: String!
+  blogID: String!
+  name: String!
+  email: String!
+  comment: String!
+  created_date: String!
+}
+
+type Query {
+  getAllUsers: [User!]!
+  getUser(id: String!): User!
+  getAllBlogs: [Blogs!]!
+  getAllBlogComments: [BlogsComments!]!
+}
+
+type Mutation {
+  createUser(userInput: CreateUserInput!): User!
+  loginUser(LoginInput: LoginUserInput!): AuthResponse!
+  getBlog(getBlogInput: GetBlogInput!): Blogs!
+  createBlog(blogInput: CreateBlogInput!): Blogs!
+  getComments(getCommentsInput: GetCommentInput!): [BlogsComments!]!
+  createComment(commentInput: CreateCommentInput!): BlogsComments!
+}
+
+input CreateUserInput {
+  fullName: String
+  email: String!
+  password: String!
+  token: String
+  firstName: String
+  lastName: String
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input GetBlogInput {
+  slug: String!
+}
+
+input CreateBlogInput {
+  slug: String!
+  title: String!
+  content: String!
+  author: String
+  created_date: String
+  meta_title: String!
+  meta_description: String!
+}
+
+input GetCommentInput {
+  blogID: String!
+}
+
+input CreateCommentInput {
+  blogID: String
+  name: String
+  email: String
+  comment: String
+  created_date: String
+}
